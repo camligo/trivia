@@ -14,7 +14,7 @@
 
 ## Description
 
-A full-stack application that allows you to play trivia. Backend built with Java & Spring, frontend built with TypeScript & React. 
+A full-stack application that allows you to play trivia. Backend built with Java & Spring, frontend built with TypeScript & React.
 
 ## Demo
 
@@ -25,7 +25,7 @@ A full-stack application that allows you to play trivia. Backend built with Java
 
 Key features of the project.
 
-## Design 
+## Design
 
 - Design goals
 - Figma screenshots
@@ -46,12 +46,13 @@ Instructions and examples on how to use the project.
 
 ## Future Goals
 
-Planned future features and improvements: 
+Planned future features and improvements:
 
 ## Changelog
 
 ### 18/09/2024 - Basic Project Setup
 
-- Created basic setup for both frontend and backend 
-- Created basic design for the app using Figma 
+- Created basic setup for both frontend and backend
+- Created basic design for the app using Figma
 - Set up testing suites for frontend and backend
+- Set up MySQL database config
