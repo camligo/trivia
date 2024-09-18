@@ -54,3 +54,4 @@ Planned future features and improvements:
 
 - Created basic setup for both frontend and backend 
 - Created basic design for the app using Figma 
+- Set up testing suites for frontend and backend
