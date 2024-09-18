@@ -50,7 +50,7 @@ Planned future features and improvements:
 
 ## Changelog
 
-# 18/09/2024 - Basic Project Setup
+### 18/09/2024 - Basic Project Setup
 
 - Created basic setup for both frontend and backend 
 - Created basic design for the app using Figma 
