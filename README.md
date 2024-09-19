@@ -64,3 +64,5 @@ Planned future features and improvements:
 - Created game entity
 - Created question entity
 - Created getter and setter methods for entities
+- Created a Controller and Service for Game entity
+- Created method to fetch new game from Open Trivia DB
