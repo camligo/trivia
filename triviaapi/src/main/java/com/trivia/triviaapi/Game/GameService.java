@@ -18,10 +18,15 @@ public class GameService {
 
   public String createGame(CreateGameDTO data) {
     Game newGame = new Game();
-    newGame.setCategory(data.getCategory());
-    newGame.setDifficulty(data.getDifficulty());
+    Integer category = data.getCategory();
+    String difficulty = data.getDifficulty();
+    newGame.setCategory(category);
+    newGame.setDifficulty(difficulty);
+
+    String newGameURL = String.format("https://opentdb.com/api.php?amount=3&category=%d&difficulty=%s&type=multiple", category, difficulty);
 
     return this.repo.save(newGame).toString();
+
     // String url = "https://opentdb.com/api.php?amount=3&type=multiple";
     // return restTemplate.getForObject(url, String.class);
   }
