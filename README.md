@@ -57,9 +57,10 @@ Planned future features and improvements:
 - Set up testing suites for frontend and backend
 - Set up MySQL database config
 
-
 ### 19/09/2024
 
 - Planned basic db schema
 - Created develop branch
 - Created game entity
+- Created question entity
+- Created getter and setter methods for entities
