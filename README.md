@@ -56,3 +56,10 @@ Planned future features and improvements:
 - Created basic design for the app using Figma
 - Set up testing suites for frontend and backend
 - Set up MySQL database config
+
+
+### 19/09/2024
+
+- Planned basic db schema
+- Created develop branch
+- Created game entity
