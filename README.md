@@ -68,3 +68,9 @@ Planned future features and improvements:
 - Created method to fetch new game from Open Trivia DB
 - Created Game DTO and Game Repository
 - Updated URL to fetch new game with dynamic category and difficulty parameters
+
+### 20/09/2024
+
+- Created a trivia and game service in the frontend
+- Created dropdown component
+- Updates create game method in backend
