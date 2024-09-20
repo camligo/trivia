@@ -72,5 +72,6 @@ Planned future features and improvements:
 ### 20/09/2024
 
 - Created a trivia and game service in the frontend
-- Created dropdown component
+- Created category dropdown component
 - Updates create game method in backend
+- Updated the category dropdown component to display the categories from the Open Trivia DB

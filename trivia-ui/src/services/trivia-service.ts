@@ -1,5 +1,10 @@
 const BASE_URL = "https://opentdb.com/api.php?amount=3&";
 
+export interface CategoryResponse {
+  id: number;
+  name: string;
+}
+
 export const fetchNewTrivia = async (category: string, difficulty: string) => {
   const response = await fetch(`${BASE_URL}category=${category}&difficulty=${difficulty}&type=multiple`);
 
@@ -17,5 +22,9 @@ export const getAllCategories = async () => {
     throw new Error("Failed to fetch categories");
   }
 
-  return await response.json();
+  const data = await response.json();
+
+  const formattedData = data.trivia_categories;
+
+  return formattedData as CategoryResponse[];
 }

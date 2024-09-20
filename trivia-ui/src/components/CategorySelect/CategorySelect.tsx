@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { getAllCategories } from "../../services/trivia-service"
+import { CategoryResponse, getAllCategories } from "../../services/trivia-service"
 
 const CategorySelect = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryResponse[]>([]);
 
   useEffect(() => {
     getAllCategories()
@@ -14,13 +14,13 @@ const CategorySelect = () => {
 
   return (
     <div>
-      {/* <select id="category">
+      <select id="category">
         {categories.map(category => (
           <option key={category.id} value={category.id}>
             {category.name}
           </option>
         ))}
-      </select> */}
+      </select>
     </div>
   )
 }
