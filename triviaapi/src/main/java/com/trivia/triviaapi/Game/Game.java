@@ -35,7 +35,7 @@ public class Game {
   private String difficulty;
 
   @Column
-  private String category;
+  private Integer category;
 
   @Column
   private Integer correctAnswersCount;
@@ -60,7 +60,7 @@ public class Game {
     return difficulty;
   }
 
-  public String getCategory() {
+  public Integer getCategory() {
     return category;
   }
 
@@ -88,7 +88,7 @@ public class Game {
     this.difficulty = difficulty;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(Integer category) {
     this.category = category;
   }
 
@@ -98,5 +98,10 @@ public class Game {
 
   public void setQuestions(List<Question> questions) {
     this.questions = questions;
+  }
+
+  @Override
+  public String toString() {
+    return "[category=" + category + ", difficulty=" + difficulty + "]";
   }
 }
