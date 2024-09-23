@@ -82,3 +82,6 @@ Planned future features and improvements:
 - Created a component for buttons to select trivia difficulty
 - Created page to display components to start new game
 - Added basic SASS styling to pages and new folder for global style variables
+- Added routing to main app with react-router-dom
+- Created landing page with Gif
+- Added navigation between landing oage and create game page

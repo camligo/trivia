@@ -1,0 +1,15 @@
+@use "../../styles/variables.scss" as v;
+
+.messageContainer {
+  border-radius: 15px;
+  text-align: center;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .messageContent {
+    color: rgb(17, 17, 17);
+    font-family: v.$main;
+  }
+}
