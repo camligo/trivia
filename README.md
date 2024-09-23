@@ -56,3 +56,32 @@ Planned future features and improvements:
 - Created basic design for the app using Figma
 - Set up testing suites for frontend and backend
 - Set up MySQL database config
+
+### 19/09/2024
+
+- Planned basic db schema
+- Created develop branch
+- Created game entity
+- Created question entity
+- Created getter and setter methods for entities
+- Created a Controller and Service for Game entity
+- Created method to fetch new game from Open Trivia DB
+- Created Game DTO and Game Repository
+- Updated URL to fetch new game with dynamic category and difficulty parameters
+
+### 20/09/2024
+
+- Created a trivia and game service in the frontend
+- Created category dropdown component
+- Updates create game method in backend
+- Updated the category dropdown component to display the categories from the Open Trivia DB
+
+
+### 23/09/2024
+
+- Created a component for buttons to select trivia difficulty
+- Created page to display components to start new game
+- Added basic SASS styling to pages and new folder for global style variables
+- Added routing to main app with react-router-dom
+- Created landing page with Gif
+- Added navigation between landing oage and create game page

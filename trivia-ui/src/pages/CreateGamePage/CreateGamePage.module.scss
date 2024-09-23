@@ -1,0 +1,72 @@
+@use "../../styles/variables.scss" as v;
+
+.pageWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: v.$bg;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+
+  .backArrow {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: v.$text;
+    cursor: pointer;
+  }
+
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 20px;
+    text-align: center;
+    gap: 0.5rem;
+
+    .heading {
+      color: v.$text;
+      font-family: v.$main;
+    }
+  }
+
+  .btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 3rem;
+
+    .startBtn {
+      width: 60%;
+      background: v.$green;
+      font-family: v.$main;
+      color: v.$text;
+      cursor: pointer;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      position: relative;
+      animation: pulse 2s infinite;
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
