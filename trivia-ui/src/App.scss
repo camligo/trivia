@@ -1,0 +1,10 @@
+@use "./styles/variables.scss" as v;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background: v.$bg;
+}

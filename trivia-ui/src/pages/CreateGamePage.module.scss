@@ -1,0 +1,45 @@
+@use "../styles/variables.scss" as v;
+
+.pageWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: v.$bg;
+  padding: 0 20px;
+
+  .contentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 20px;
+    text-align: center;
+    gap: 0.5rem;
+
+    .heading {
+      color: v.$text;
+      font-family: v.$main;
+    }
+  }
+
+  .btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 3rem;
+
+    .startBtn {
+      width: 80%;
+      background: v.$green;
+      font-family: v.$main;
+      color: v.$text;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+  }
+}

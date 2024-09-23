@@ -75,3 +75,10 @@ Planned future features and improvements:
 - Created category dropdown component
 - Updates create game method in backend
 - Updated the category dropdown component to display the categories from the Open Trivia DB
+
+
+### 23/09/2024
+
+- Created a component for buttons to select trivia difficulty
+- Created page to display components to start new game
+- Added basic SASS styling to pages and new folder for global style variables

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { CategoryResponse, getAllCategories } from "../../services/trivia-service"
+import styles from "./CategorySelect.module.scss"
 
 const CategorySelect = () => {
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
@@ -14,7 +15,7 @@ const CategorySelect = () => {
 
   return (
     <div>
-      <select id="category">
+      <select id="category" className={styles.selectMenu}>
         {categories.map(category => (
           <option key={category.id} value={category.id}>
             {category.name}

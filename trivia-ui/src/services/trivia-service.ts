@@ -5,6 +5,8 @@ export interface CategoryResponse {
   name: string;
 }
 
+export const difficulties = ["easy", "medium", "hard"]
+
 export const fetchNewTrivia = async (category: string, difficulty: string) => {
   const response = await fetch(`${BASE_URL}category=${category}&difficulty=${difficulty}&type=multiple`);
 

@@ -1,12 +1,12 @@
-import "./App.css";
-import CategorySelect from "./components/CategorySelect/CategorySelect"
+import "./App.scss";
+import CreateGamePage from "./pages/CreateGamePage";
 
 function App() {
 
 
   return (
     <>
-      <CategorySelect/>
+      <CreateGamePage />
     </>
   )
 }
