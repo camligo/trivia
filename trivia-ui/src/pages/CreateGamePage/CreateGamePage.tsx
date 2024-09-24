@@ -5,8 +5,16 @@ import styles from "./CreateGamePage.module.scss"
 import GameForm from "../../components/GameForm/GameForm";
 import { GameFormData } from "../../components/GameForm/schema";
 import { fetchNewTrivia } from "../../services/trivia-service";
+import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
+import { useContext } from "react";
 
 const CreateGamePage = () => {
+  const context = useContext(QuestionsContext);
+  if (context === undefined) {
+    throw new Error('Something went wrong');
+  }
+  const { setQuestions } = context;
+
   const navigate = useNavigate();
 
   const handleBackClick = () => {
@@ -15,10 +23,12 @@ const CreateGamePage = () => {
 
   const handleSubmit = async (data: GameFormData) => {
     fetchNewTrivia(data)
-        .then((game) => {
-            console.log(game)
-        })
-        .catch((e) => console.log(e));
+      .then((game) => {
+        setQuestions(game);
+        console.log(game)
+        navigate('/game')
+      })
+      .catch((e) => console.log(e));
   }
 
   return (
@@ -26,25 +36,7 @@ const CreateGamePage = () => {
       <div className={styles.backArrow} onClick={handleBackClick}>
         <FontAwesomeIcon icon={faAngleLeft} />
       </div>
-
       <GameForm onSubmit={handleSubmit} />
-      {/* <div className={styles.contentContainer}>
-        <h2 className={styles.heading}>
-          Choose a category:
-        </h2>
-        <CategorySelect />
-      </div>
-      <div className={styles.contentContainer}>
-        <h2 className={styles.heading}>
-          Difficulty level:
-        </h2>
-        <DifficultyButtons />
-      </div>
-      <div className={styles.btnContainer}>
-        <button className={styles.startBtn}>
-          Start
-        </button>
-      </div> */}
     </div>
   )
 }

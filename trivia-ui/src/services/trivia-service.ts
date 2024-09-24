@@ -8,11 +8,9 @@ export interface CategoryResponse {
 }
 
 export interface QuestionResponse {
-  results: Array<{
-    question: string;
-    correct_answer: string;
-    incorrect_answers: string[];
-  }>;
+  question: string;
+  correct_answer: string;
+  incorrect_answers: string[];
 }
 
 export const difficulties = ["easy", "medium", "hard"]
