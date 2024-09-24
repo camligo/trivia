@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react"
 import { CategoryResponse, getAllCategories } from "../../services/trivia-service"
 import styles from "./CategorySelect.module.scss"
+import { UseFormRegisterReturn } from "react-hook-form";
 
-const CategorySelect = () => {
+interface CategorySelectProps {
+  register: UseFormRegisterReturn<"category">
+}
+
+const CategorySelect = ({ register }: CategorySelectProps) => {
+
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
 
   useEffect(() => {
@@ -15,7 +21,11 @@ const CategorySelect = () => {
 
   return (
     <div>
-      <select id="category" className={styles.selectMenu}>
+      <select 
+        id="category" 
+        className={styles.selectMenu} 
+        {...register}
+      >
         {categories.map(category => (
           <option key={category.id} value={category.id}>
             {category.name}

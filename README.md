@@ -84,4 +84,12 @@ Planned future features and improvements:
 - Added basic SASS styling to pages and new folder for global style variables
 - Added routing to main app with react-router-dom
 - Created landing page with Gif
-- Added navigation between landing oage and create game page
+- Added navigation between landing page and create game page
+
+### 24/09/2024
+
+- Created React hook form with Zod for creation of a new trivia game
+- Created context for fetched data across pages
+- Updated fetch method to get correct data from the form
+- Created new page to display trivia questions
+- Created function to send new game data to the backend 
