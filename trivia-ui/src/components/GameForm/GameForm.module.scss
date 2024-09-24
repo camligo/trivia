@@ -1,0 +1,83 @@
+@use "../../styles/variables.scss" as v;
+
+.formContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 20px;
+    text-align: center;
+    gap: 1rem;
+
+    .heading {
+      color: v.$text;
+      font-family: v.$main;
+      margin-bottom: 10px;
+    }
+
+    .buttonsContainer {
+      display: flex;
+      justify-content: center;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .btn {
+        padding: 10px;
+        margin: 5px;
+        border-radius: 15px;
+        background: transparent;
+        border: 1px solid v.$text;
+        color: v.$text;
+        font-family: v.$main;
+        cursor: pointer;
+        transition: background 0.3s ease, border-color 0.3s ease;
+      }
+
+      input[type="radio"]:checked + label {
+        background: v.$orange;
+        border-color: v.$orange;
+        color: white;
+      }
+    }
+  }
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  .startBtn {
+    width: 70%;
+    background: v.$green;
+    font-family: v.$main;
+    color: v.$text;
+    cursor: pointer;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    animation: pulse 2s infinite;
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+}
