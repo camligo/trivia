@@ -4,6 +4,9 @@ import DifficultyButtons from "../../components/DifficultyButtons/DifficultyButt
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateGamePage.module.scss"
+import GameForm from "../../components/GameForm/GameForm";
+import { GameFormData } from "../../components/GameForm/schema";
+import { fetchNewTrivia } from "../../services/trivia-service";
 
 const CreateGamePage = () => {
   const navigate = useNavigate();
@@ -12,12 +15,22 @@ const CreateGamePage = () => {
     navigate(-1);
   };
 
+  const handleSubmit = async (data: GameFormData) => {
+    fetchNewTrivia(data)
+        .then((game) => {
+            console.log(game)
+        })
+        .catch((e) => console.log(e));
+  }
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.backArrow} onClick={handleBackClick}>
         <FontAwesomeIcon icon={faAngleLeft} />
       </div>
-      <div className={styles.contentContainer}>
+
+      <GameForm onSubmit={handleSubmit} />
+      {/* <div className={styles.contentContainer}>
         <h2 className={styles.heading}>
           Choose a category:
         </h2>
@@ -33,7 +46,7 @@ const CreateGamePage = () => {
         <button className={styles.startBtn}>
           Start
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

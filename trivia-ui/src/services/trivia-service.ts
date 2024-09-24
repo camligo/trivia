@@ -1,3 +1,5 @@
+import { GameFormData } from "../components/GameForm/schema";
+
 const BASE_URL = "https://opentdb.com/api.php?amount=3&";
 
 export interface CategoryResponse {
@@ -7,8 +9,8 @@ export interface CategoryResponse {
 
 export const difficulties = ["easy", "medium", "hard"]
 
-export const fetchNewTrivia = async (category: string, difficulty: string) => {
-  const response = await fetch(`${BASE_URL}category=${category}&difficulty=${difficulty}&type=multiple`);
+export const fetchNewTrivia = async (data: GameFormData) => {
+  const response = await fetch(`${BASE_URL}category=${data.category}&difficulty=${data.difficulty}&type=multiple`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch");
