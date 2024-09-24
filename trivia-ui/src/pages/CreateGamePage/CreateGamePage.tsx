@@ -7,6 +7,7 @@ import { GameFormData } from "../../components/GameForm/schema";
 import { fetchNewTrivia } from "../../services/trivia-service";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { useContext } from "react";
+import { createGame } from "../../services/game-service";
 
 const CreateGamePage = () => {
   const context = useContext(QuestionsContext);
@@ -22,13 +23,28 @@ const CreateGamePage = () => {
   };
 
   const handleSubmit = async (data: GameFormData) => {
-    fetchNewTrivia(data)
-      .then((game) => {
-        setQuestions(game);
-        console.log(game)
-        navigate('/game')
-      })
-      .catch((e) => console.log(e));
+    // fetchNewTrivia(data)
+    //   .then((game) => {
+    //     setQuestions(game);
+    //     console.log(game)
+    //     navigate('/game')
+    //   })
+    //   .catch((e) => console.log(e));
+
+    try {
+      // Create the game and fetch new trivia in parallel
+      const [game, trivia] = await Promise.all([
+          createGame(data),
+          fetchNewTrivia(data),
+      ]);
+
+      setQuestions(trivia); // Assuming fetchNewTrivia returns the questions
+      console.log(game, trivia);
+      
+      navigate('/game'); // Navigate to the game page
+    } catch (e) {
+        console.error('Error:', e); // Handle errors
+    }
   }
 
   return (
