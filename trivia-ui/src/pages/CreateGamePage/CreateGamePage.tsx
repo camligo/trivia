@@ -39,7 +39,8 @@ const CreateGamePage = () => {
       ]);
 
       setQuestions(trivia); // Assuming fetchNewTrivia returns the questions
-      console.log(game, trivia);
+      console.log(game);
+      console.log(trivia)
       
       navigate('/game'); // Navigate to the game page
     } catch (e) {
