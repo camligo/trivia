@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import CategorySelect from "../../components/CategorySelect/CategorySelect"
-import DifficultyButtons from "../../components/DifficultyButtons/DifficultyButtons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateGamePage.module.scss"

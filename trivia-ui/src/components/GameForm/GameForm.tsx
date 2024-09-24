@@ -1,9 +1,8 @@
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { GameFormData, schema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CategorySelect from "../CategorySelect/CategorySelect";
 import styles from "./GameForm.module.scss";
-import DifficultyButtons from "../DifficultyButtons/DifficultyButtons";
 import { useState } from "react";
 import { difficulties } from "../../services/trivia-service";
 
