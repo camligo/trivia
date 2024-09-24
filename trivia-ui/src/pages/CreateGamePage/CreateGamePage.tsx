@@ -38,9 +38,9 @@ const CreateGamePage = () => {
           fetchNewTrivia(data),
       ]);
 
-      setQuestions(trivia); // Assuming fetchNewTrivia returns the questions
-      console.log(game);
-      console.log(trivia)
+      setQuestions(trivia);
+      console.log('Game:', game);
+      console.log('Trivia:', trivia);
       
       navigate('/game'); // Navigate to the game page
     } catch (e) {

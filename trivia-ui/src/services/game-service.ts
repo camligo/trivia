@@ -19,5 +19,5 @@ export const createGame = async (data: GameFormData) => {
     throw new Error('Failed to post');
   }
 
-  return await response.json();
+  return response;
 }
