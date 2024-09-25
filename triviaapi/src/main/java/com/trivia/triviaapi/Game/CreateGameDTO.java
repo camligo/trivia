@@ -29,7 +29,6 @@ public class CreateGameDTO {
 
     @Override
     public String toString() {
-        return "CreateGameDTO [category=" + category + ", difficulty= " +
-                difficulty + "]";
+        return "CreateGameDTO [category=" + category + ", difficulty= " + difficulty + "]";
     }
 }

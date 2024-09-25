@@ -1,0 +1,25 @@
+@use "../../styles/variables.scss" as v;
+
+.pageWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: v.$bg;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+
+  .backArrow {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: v.$text;
+    cursor: pointer;
+  }
+}
+

@@ -1,8 +1,10 @@
 package com.trivia.triviaapi.Game;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class GameService {
@@ -10,25 +12,35 @@ public class GameService {
   @Autowired
   private GameRepository repo;
 
-  private final RestTemplate restTemplate;
-
-  public GameService(RestTemplate restTemplate) {
-    this.restTemplate = restTemplate;
-  }
-
-  public String createGame(CreateGameDTO data) {
+  public Game createGame(CreateGameDTO data) {
     Game newGame = new Game();
     Integer category = data.getCategory();
     String difficulty = data.getDifficulty();
     newGame.setCategory(category);
     newGame.setDifficulty(difficulty);
 
-    String newGameURL = String.format("https://opentdb.com/api.php?amount=3&category=%d&difficulty=%s&type=multiple", category, difficulty);
+    // return this.repo.save(newGame).toString();
+    this.repo.save(newGame);
 
-    return this.repo.save(newGame).toString();
-
-    // String url = "https://opentdb.com/api.php?amount=3&type=multiple";
-    // return restTemplate.getForObject(url, String.class);
+    return newGame;
   }
 
+  public Optional<Game> getGameById(Long id) {
+    return this.repo.findById(id);
+  }
+
+  public String updateGame(UpdateGameDTO data, @PathVariable Long id) {
+    Optional<Game> game = this.getGameById(id);
+
+    if (game.isEmpty()) {
+      return "Game not found";
+    }
+    Game foundGame = game.get();
+
+    if (data.getScore() != null) {
+      foundGame.setScore(data.getScore());
+    }
+
+    return this.repo.save(foundGame).toString();
+  }
 }

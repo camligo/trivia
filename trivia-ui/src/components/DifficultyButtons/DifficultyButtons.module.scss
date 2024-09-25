@@ -1,0 +1,20 @@
+@use "../../styles/variables.scss" as v;
+
+.buttonsContainer {
+  display: flex;
+
+  .btn {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 15px;
+    background: transparent;
+    border: 1px solid v.$text;
+    color: v.$text;
+    font-family: v.$main;
+  }
+
+  .selected {
+    background: v.$orange;
+    border: 1px solid v.$orange;
+  }
+}
