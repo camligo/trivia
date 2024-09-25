@@ -13,7 +13,6 @@ interface QuestionFormProps {
 }
 
 const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps ) => {
-  
 
   const context = useContext(QuestionsContext);
   if (context === undefined) {
@@ -24,10 +23,11 @@ const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps )
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    reset,
+    formState: { isSubmitSuccessful },
   } = useForm<QuestionFormData>({ resolver: zodResolver(schema)})
 
-  isSubmitSuccessful;
+  isSubmitSuccessful && reset();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -38,21 +38,21 @@ const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps )
         ) : (
           answers.map((answer, index) => (
             <div key={index}>
-                <input
-                  {...register("selectedAnswer")}
-                  type="radio"
-                  id={answer}
-                  value={answer}
-                />
-                <label htmlFor={answer} className={styles.btn}>
-                  {answer}
-                </label>
-              </div>
+              <input
+                {...register("selectedAnswer")}
+                type="radio"
+                id={answer}
+                value={answer}
+              />
+              <label htmlFor={answer} className={styles.btn}>
+                {answer}
+              </label>
+            </div>
           ))
         )}
       </div>
 
-      <NextQuestionButton />
+      <NextQuestionButton/>
     </form>
   )
 }

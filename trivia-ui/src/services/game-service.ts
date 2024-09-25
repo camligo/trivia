@@ -21,3 +21,15 @@ export const createGame = async (data: GameFormData) => {
 
   return response;
 }
+
+// export const updateGame = async (id: number) => {
+//   const response = await fetch(`${baseURL}/games/${id}`, {
+//     method: 'PATCH',
+//     body: JSON.stringify({
+//       "score": parseInt(score),
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   });
+// }

@@ -3,6 +3,7 @@ import { QuestionsContext } from "../../context/QuestionsContextProvider/Questio
 import { getQuestionAnswers } from "../../services/trivia-service";
 import QuestionForm from "../../components/QuestionForm/QuestionForm";
 import { useNavigate } from "react-router-dom";
+import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
 
 const QuestionPage = () => {
   const context = useContext(QuestionsContext);
@@ -10,6 +11,12 @@ const QuestionPage = () => {
     throw new Error('Something went wrong');
   }
   const { questions } = context;
+
+  const scoreContext = useContext(ScoreContext);
+  if (scoreContext === undefined) {
+    throw new Error("Couldn't find score");
+  }
+  const { score, setScore } = scoreContext;
 
   const navigate = useNavigate();
 
@@ -25,9 +32,14 @@ const QuestionPage = () => {
 
   const nextQuestion = (index: number) => {
     if (index === lastQuestionIndex - 1) {
-      navigate("/");
+      const newScore = score + 1;
+      setScore(newScore);
+      console.log("score", newScore)
+      navigate("/game/results");
     } else {
       setCurrentQuestionIndex(index + 1);
+      const newScore = score + 1;
+      setScore(newScore);
     }
   }
 
