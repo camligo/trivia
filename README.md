@@ -103,4 +103,5 @@ Planned future features and improvements:
 - Implemented functionality for next button to display next question in trivia and added basic styling for question page
 - Created context and updated backend to keep track of score
 - Implemented score calculation functionality in frontend
-- Created function to send score to backend 
+- Created function to send score to backend
+- Added a method in service tha utilizes built-in HTML parsing in browser to decode questions and answers

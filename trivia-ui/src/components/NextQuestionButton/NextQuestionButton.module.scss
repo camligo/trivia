@@ -12,6 +12,10 @@
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   animation: pulse 2s infinite;
+  align-self: center;
+  position: absolute;
+  left: 50%;
+  top: 75%;
 
   @keyframes pulse {
     0% {

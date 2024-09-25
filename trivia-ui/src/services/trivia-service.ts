@@ -45,9 +45,7 @@ export const getAllCategories = async () => {
   }
 
   const data = await response.json();
-
   const formattedData = data.trivia_categories;
-
   return formattedData as CategoryResponse[];
 }
 
@@ -68,4 +66,10 @@ export const checkAnswer = (selectedAnswer: string, currentQuestion: QuestionRes
   }
 
   return false;
+}
+
+export const decodeHtmlEntities = (text: string) => {
+  const textArea = document.createElement('textarea');
+  textArea.innerHTML = text;
+  return textArea.value;
 }

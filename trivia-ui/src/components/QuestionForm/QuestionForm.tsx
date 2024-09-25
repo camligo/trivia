@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
-import { checkAnswer, getQuestionAnswers } from "../../services/trivia-service";
+import { checkAnswer, decodeHtmlEntities, getQuestionAnswers } from "../../services/trivia-service";
 import { updateGame } from "../../services/game-service";
 
 const QuestionForm = () => {
@@ -74,7 +74,7 @@ const QuestionForm = () => {
 
   return (
     <form onSubmit={handleSubmit(() => nextQuestion(currentQuestionIndex))} className={styles.formWrapper}>
-      <h2 className={styles.question}>{questions[currentQuestionIndex].question}</h2>
+      <h2 className={styles.question}>{decodeHtmlEntities(questions[currentQuestionIndex].question)}</h2>
       <div className={styles.answersContainer}>
         {currentAnswers.length === 0 ? (
           <p>Couldn't find any answers</p>
@@ -88,13 +88,12 @@ const QuestionForm = () => {
                 value={answer}
               />
               <label htmlFor={answer} className={styles.btn}>
-                {answer}
+                {decodeHtmlEntities(answer)}
               </label>
             </div>
           ))
         )}
       </div>
-
       <NextQuestionButton/>
     </form>
   )
