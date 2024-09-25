@@ -30,9 +30,9 @@ const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps )
   isSubmitSuccessful && reset();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2 className={styles.Question}>{questions[questionIndex].question}</h2>
-      <div className={styles.AnswersContainer}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
+      <h2 className={styles.question}>{questions[questionIndex].question}</h2>
+      <div className={styles.answersContainer}>
         {answers.length === 0 ? (
           <p>Couldn't find any answers</p>
         ) : (

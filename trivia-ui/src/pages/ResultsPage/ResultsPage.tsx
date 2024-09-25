@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
+import styles from "./ResultsPage.module.scss"
+import { Link } from "react-router-dom";
 
 const ResultsPage = () => {
   const scoreContext = useContext(ScoreContext);
@@ -8,9 +10,11 @@ const ResultsPage = () => {
   }
   const { score } = scoreContext;
 
+
   return (
-    <div>
-      <h3>{score}</h3>
+    <div className={styles.wrapper}>
+      <h2 className={styles.text}>You scored {score} points!</h2>
+      <Link to="/game/new" className={styles.text}>Play again?</Link>
     </div>
   )
 }
