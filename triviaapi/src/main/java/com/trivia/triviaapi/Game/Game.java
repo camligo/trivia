@@ -37,8 +37,6 @@ public class Game {
   @Column
   private Integer category;
 
-  @Column
-  private Integer correctAnswersCount;
 
   @OneToMany(mappedBy = "game")
   @JsonIgnoreProperties("game")
@@ -62,10 +60,6 @@ public class Game {
 
   public Integer getCategory() {
     return category;
-  }
-
-  public Integer getCorrectAnswersCount() {
-    return correctAnswersCount;
   }
 
   public List<Question> getQuestions() {
@@ -92,16 +86,12 @@ public class Game {
     this.category = category;
   }
 
-  public void setCorrectAnswersCount(Integer correctAnswersCount) {
-    this.correctAnswersCount = correctAnswersCount;
-  }
-
   public void setQuestions(List<Question> questions) {
     this.questions = questions;
   }
 
   @Override
   public String toString() {
-    return "[category=" + category + ", difficulty=" + difficulty + "]";
+    return "[category=" + category + ", difficulty=" + difficulty + ", score" + score + "]";
   }
 }

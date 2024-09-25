@@ -3,6 +3,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "./NextQuestionButton.module.scss";
 
 const NextQuestionButton = () => {
+
   return (
     <>
       <button className={styles.btnContainer} type="submit">

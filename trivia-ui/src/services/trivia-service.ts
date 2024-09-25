@@ -1,6 +1,6 @@
 import { GameFormData } from "../components/GameForm/schema";
 
-const BASE_URL = "https://opentdb.com/api.php?amount=3&";
+const BASE_URL = "https://opentdb.com/api.php?amount=5&";
 
 export interface CategoryResponse {
   id: number;
@@ -59,7 +59,13 @@ export const getQuestionAnswers = ( question: QuestionResponse ) => {
   for (let i = 0; i < question.incorrect_answers.length; i++) {
     answers.push(question.incorrect_answers[i]);
   }
-
-  console.log("before", answers)
   return answers.sort(() => Math.random() - 0.5);
+}
+
+export const checkAnswer = (selectedAnswer: string, currentQuestion: QuestionResponse) => {
+  if (selectedAnswer === currentQuestion.correct_answer) {
+    return true;
+  }
+
+  return false;
 }
