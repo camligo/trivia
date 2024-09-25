@@ -50,3 +50,16 @@ export const getAllCategories = async () => {
 
   return formattedData as CategoryResponse[];
 }
+
+export const getQuestionAnswers = ( question: QuestionResponse ) => {
+  const answers: string[] = [];
+
+  answers.push(question.correct_answer);
+
+  for (let i = 0; i < question.incorrect_answers.length; i++) {
+    answers.push(question.incorrect_answers[i]);
+  }
+
+  console.log("before", answers)
+  return answers.sort(() => Math.random() - 0.5);
+}

@@ -23,14 +23,6 @@ const CreateGamePage = () => {
   };
 
   const handleSubmit = async (data: GameFormData) => {
-    // fetchNewTrivia(data)
-    //   .then((game) => {
-    //     setQuestions(game);
-    //     console.log(game)
-    //     navigate('/game')
-    //   })
-    //   .catch((e) => console.log(e));
-
     try {
       // Create the game and fetch new trivia in parallel
       const [game, trivia] = await Promise.all([
@@ -41,7 +33,7 @@ const CreateGamePage = () => {
       setQuestions(trivia);
       console.log('Game:', game);
       console.log('Trivia:', trivia);
-      
+
       navigate('/game'); // Navigate to the game page
     } catch (e) {
         console.error('Error:', e); // Handle errors

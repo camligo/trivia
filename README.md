@@ -92,4 +92,12 @@ Planned future features and improvements:
 - Created context for fetched data across pages
 - Updated fetch method to get correct data from the form
 - Created new page to display trivia questions
-- Created function to send new game data to the backend 
+- Created function to send new game data to the backend
+
+
+### 25/09/2024
+
+- Created method to display randomized answer alternatives to trivia questions
+- Created new Questions page to display each question and answers
+- Created new React hook form with Zod to grab user answer input
+- Implemented functionality for next button to display next question in trivia and added basic styling for question page
