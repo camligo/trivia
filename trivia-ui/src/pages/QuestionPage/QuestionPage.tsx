@@ -4,6 +4,7 @@ import { getQuestionAnswers } from "../../services/trivia-service";
 import QuestionForm from "../../components/QuestionForm/QuestionForm";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
+import styles from "./QuestionPage.module.scss"
 
 const QuestionPage = () => {
   const context = useContext(QuestionsContext);
