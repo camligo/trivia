@@ -23,7 +23,6 @@ const CreateGamePage = () => {
   };
 
   const handleSubmit = async (data: GameFormData) => {
-
     try {
       // Create the game and fetch new trivia in parallel
       const [game, trivia] = await Promise.all([

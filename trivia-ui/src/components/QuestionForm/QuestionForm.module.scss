@@ -1,0 +1,38 @@
+@use "../../styles/variables.scss" as v;
+
+.Question {
+    display: flex;
+    font-family: v.$main;
+    padding: 10px;
+    color: v.$text;
+}
+
+.AnswersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 10px;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    .btn {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 15px;
+      background: transparent;
+      border: 1px solid v.$text;
+      color: v.$text;
+      font-family: v.$main;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    input[type="radio"]:checked + label {
+      background: v.$orange;
+      border-color: v.$orange;
+      color: white;
+    }
+  }

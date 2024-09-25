@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
-import { QuestionResponse, getQuestionAnswers } from "../../services/trivia-service";
+import { getQuestionAnswers } from "../../services/trivia-service";
 import QuestionForm from "../../components/QuestionForm/QuestionForm";
+import { useNavigate } from "react-router-dom";
 
 const QuestionPage = () => {
   const context = useContext(QuestionsContext);
@@ -10,21 +11,28 @@ const QuestionPage = () => {
   }
   const { questions } = context;
 
-  const answers = getQuestionAnswers(questions[0]);
+  const navigate = useNavigate();
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [currentAnswers, setCurrentAnswers] = useState<string[]>([]);
+
+  const lastQuestionIndex = questions.length;
+
+  useEffect(() => {
+    const answers = getQuestionAnswers(questions[currentQuestionIndex]);
+    setCurrentAnswers(answers);
+  }, [currentQuestionIndex]);
+
+  const nextQuestion = (index: number) => {
+    if (index === lastQuestionIndex - 1) {
+      navigate("/");
+    } else {
+      setCurrentQuestionIndex(index + 1);
+    }
+  }
 
   return (
-    <>
-    <div>
-      {/* {questions.length === 0 ? (
-        <p>Couldn't find any questions</p>
-      ) : (
-        questions.map((question: QuestionResponse, index) => (
-          <p key={index}>{question.question}</p>
-        ))
-      )} */}
-    </div>
-    <QuestionForm answers={answers} question={questions[0].question}/>
-    </>
+    <QuestionForm answers={currentAnswers} onSubmit={() => nextQuestion(currentQuestionIndex)} questionIndex={currentQuestionIndex}/>
   )
 }
 
