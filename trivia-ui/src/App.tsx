@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />}/>
             <Route path="/game/new" element={<CreateGamePage />} />
-            <Route path="/game" element={<QuestionPage />}/>
+            <Route path="/game/:id" element={<QuestionPage />}/>
             <Route path="/game/results" element={<ResultsPage />} />
           </Routes>
         </BrowserRouter>

@@ -3,25 +3,68 @@ import { useForm } from "react-hook-form";
 import { QuestionFormData, schema } from "./schema";
 import styles from "./QuestionForm.module.scss";
 import NextQuestionButton from "../NextQuestionButton/NextQuestionButton";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
+import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
+import { useNavigate, useParams } from "react-router-dom";
+import { checkAnswer, getQuestionAnswers } from "../../services/trivia-service";
+import { updateGame } from "../../services/game-service";
 
-interface QuestionFormProps {
-  onSubmit: () => unknown;
-  answers: string[];
-  questionIndex: number;
-}
-
-const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps ) => {
-
+const QuestionForm = () => {
   const context = useContext(QuestionsContext);
   if (context === undefined) {
     throw new Error('Something went wrong');
   }
   const { questions } = context;
 
+  const scoreContext = useContext(ScoreContext);
+  if (scoreContext === undefined) {
+    throw new Error("Couldn't find score");
+  }
+  const { score, setScore } = scoreContext;
+
+  const navigate = useNavigate();
+
+  const { id } = useParams() as { id: string };
+  const idNumber = parseInt(id);
+
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [currentAnswers, setCurrentAnswers] = useState<string[]>([]);
+
+  const lastQuestionIndex = questions.length;
+
+  useEffect(() => {
+    const answers = getQuestionAnswers(questions[currentQuestionIndex]);
+    setCurrentAnswers(answers);
+  }, [currentQuestionIndex]);
+
+  const nextQuestion = (index: number) => {
+    if (index === lastQuestionIndex - 1) {
+      const check = checkAnswer(getValues("selectedAnswer"), questions[index]);
+
+      if (check) {
+        const newScore = score + 1;
+        setScore(newScore);
+        console.log("score", newScore);
+      }
+
+      updateGame(idNumber, score);
+      navigate("/game/results");
+    } else {
+      const check = checkAnswer(getValues("selectedAnswer"), questions[index]);
+
+      if (check) {
+        const newScore = score + 1;
+        setScore(newScore);
+      }
+
+      setCurrentQuestionIndex(index + 1);
+    }
+  }
+
   const {
     register,
+    getValues,
     handleSubmit,
     reset,
     formState: { isSubmitSuccessful },
@@ -30,13 +73,13 @@ const QuestionForm = ( { onSubmit, answers, questionIndex }: QuestionFormProps )
   isSubmitSuccessful && reset();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.formWrapper}>
-      <h2 className={styles.question}>{questions[questionIndex].question}</h2>
+    <form onSubmit={handleSubmit(() => nextQuestion(currentQuestionIndex))} className={styles.formWrapper}>
+      <h2 className={styles.question}>{questions[currentQuestionIndex].question}</h2>
       <div className={styles.answersContainer}>
-        {answers.length === 0 ? (
+        {currentAnswers.length === 0 ? (
           <p>Couldn't find any answers</p>
         ) : (
-          answers.map((answer, index) => (
+          currentAnswers.map((answer, index) => (
             <div key={index}>
               <input
                 {...register("selectedAnswer")}

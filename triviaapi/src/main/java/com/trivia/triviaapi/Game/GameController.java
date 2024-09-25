@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @RestController
 @RequestMapping("games")
 public class GameController {
@@ -19,13 +18,13 @@ public class GameController {
   private GameService gameService;
 
   @PostMapping
-  public String createGame(@RequestBody CreateGameDTO data) {
+  public Game createGame(@RequestBody CreateGameDTO data) {
     return this.gameService.createGame(data);
   }
 
   @GetMapping("/{id}")
   public Optional<Game> getGameById(@PathVariable Long id) {
-      return this.gameService.getGameById(id);
+    return this.gameService.getGameById(id);
   }
 
   @PatchMapping("/{id}")

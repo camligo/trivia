@@ -102,3 +102,5 @@ Planned future features and improvements:
 - Created new React hook form with Zod to grab user answer input
 - Implemented functionality for next button to display next question in trivia and added basic styling for question page
 - Created context and updated backend to keep track of score
+- Implemented score calculation functionality in frontend
+- Created function to send score to backend 

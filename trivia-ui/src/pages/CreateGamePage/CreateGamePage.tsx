@@ -8,6 +8,7 @@ import { fetchNewTrivia } from "../../services/trivia-service";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { useContext } from "react";
 import { createGame } from "../../services/game-service";
+import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
 
 const CreateGamePage = () => {
   const context = useContext(QuestionsContext);
@@ -15,6 +16,12 @@ const CreateGamePage = () => {
     throw new Error('Something went wrong');
   }
   const { setQuestions } = context;
+
+  const scoreContext = useContext(ScoreContext);
+  if (scoreContext === undefined) {
+    throw new Error("Couldn't find score");
+  }
+  const { setScore } = scoreContext;
 
   const navigate = useNavigate();
 
@@ -29,12 +36,13 @@ const CreateGamePage = () => {
           createGame(data),
           fetchNewTrivia(data),
       ]);
-
+      
+      setScore(0);
       setQuestions(trivia);
       console.log('Game:', game);
       console.log('Trivia:', trivia);
 
-      navigate('/game'); // Navigate to the game page
+      navigate(`/game/${game.id}`); // Navigate to the game page
     } catch (e) {
         console.error('Error:', e); // Handle errors
     }

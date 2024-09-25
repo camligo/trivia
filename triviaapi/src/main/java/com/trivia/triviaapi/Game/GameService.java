@@ -12,14 +12,17 @@ public class GameService {
   @Autowired
   private GameRepository repo;
 
-  public String createGame(CreateGameDTO data) {
+  public Game createGame(CreateGameDTO data) {
     Game newGame = new Game();
     Integer category = data.getCategory();
     String difficulty = data.getDifficulty();
     newGame.setCategory(category);
     newGame.setDifficulty(difficulty);
 
-    return this.repo.save(newGame).toString();
+    // return this.repo.save(newGame).toString();
+    this.repo.save(newGame);
+
+    return newGame;
   }
 
   public Optional<Game> getGameById(Long id) {
