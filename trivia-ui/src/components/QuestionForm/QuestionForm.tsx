@@ -46,9 +46,11 @@ const QuestionForm = () => {
         const newScore = score + 1;
         setScore(newScore);
         console.log("score", newScore);
+        updateGame(idNumber, newScore);
+      } else {
+        updateGame(idNumber, score);
       }
 
-      updateGame(idNumber, score);
       navigate("/game/results");
     } else {
       const check = checkAnswer(getValues("selectedAnswer"), questions[index]);

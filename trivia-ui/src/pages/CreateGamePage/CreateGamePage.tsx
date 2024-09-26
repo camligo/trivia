@@ -26,7 +26,7 @@ const CreateGamePage = () => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const handleSubmit = async (data: GameFormData) => {
