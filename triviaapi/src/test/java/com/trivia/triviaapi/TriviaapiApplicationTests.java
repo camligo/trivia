@@ -18,5 +18,4 @@ class TriviaapiApplicationTests {
     int b = 1;
     assertThat(a).isEqualTo(b);
   }
-
 }

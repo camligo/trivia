@@ -29,18 +29,14 @@ public class GameService {
     return this.repo.findById(id);
   }
 
-  public String updateGame(UpdateGameDTO data, @PathVariable Long id) {
+  public Game updateGame(UpdateGameDTO data, @PathVariable Long id) {
     Optional<Game> game = this.getGameById(id);
-
-    if (game.isEmpty()) {
-      return "Game not found";
-    }
     Game foundGame = game.get();
 
     if (data.getScore() != null) {
       foundGame.setScore(data.getScore());
     }
 
-    return this.repo.save(foundGame).toString();
+    return this.repo.save(foundGame);
   }
 }

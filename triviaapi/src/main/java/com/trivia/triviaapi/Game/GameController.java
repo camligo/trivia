@@ -3,6 +3,9 @@ package com.trivia.triviaapi.Game;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,17 +21,25 @@ public class GameController {
   private GameService gameService;
 
   @PostMapping
-  public Game createGame(@RequestBody CreateGameDTO data) {
-    return this.gameService.createGame(data);
+  public ResponseEntity<Game> createGame(@RequestBody CreateGameDTO data) {
+
+    Game newGame = this.gameService.createGame(data);
+    return new ResponseEntity<Game>(newGame, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public Optional<Game> getGameById(@PathVariable Long id) {
-    return this.gameService.getGameById(id);
+  public ResponseEntity<Game> getGameById(@PathVariable Long id) throws Exception {
+    Optional<Game> result = this.gameService.getGameById(id);
+
+    Game foundGame = result.orElseThrow(() -> new Exception("Couldn't find game with id " + id));
+
+    return new ResponseEntity<Game>(foundGame, HttpStatus.OK);
   }
 
   @PatchMapping("/{id}")
-  public String updateGame(@RequestBody UpdateGameDTO data, @PathVariable Long id) {
-    return this.gameService.updateGame(data, id);
+  public ResponseEntity<Game> updateGame(@RequestBody UpdateGameDTO data, @PathVariable Long id) {
+    Game updatedGame = this.gameService.updateGame(data, id);
+
+    return new ResponseEntity<Game>(updatedGame, HttpStatus.OK);
   }
 }
