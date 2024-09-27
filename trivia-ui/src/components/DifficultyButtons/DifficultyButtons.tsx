@@ -1,19 +1,17 @@
 import { useState } from "react"
 import { difficulties, fetchNewTrivia } from "../../services/trivia-service"
 import styles from "./DifficultyButtons.module.scss"
+import { UseFormRegisterReturn } from "react-hook-form"
 
-const DifficultyButtons = () => {
+interface DifficultyButtonsProps {
+  register: UseFormRegisterReturn<"difficulty">
+}
+
+const DifficultyButtons = ({ register }: DifficultyButtonsProps) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>("");
 
   const handleClick = async (difficulty: string) => {
     setSelectedDifficulty(difficulty);
-
-    try {
-      const trivia = await fetchNewTrivia("9", difficulty);
-      console.log(trivia)
-    } catch (e) {
-      console.error("Failed to fetch trivia", e)
-    }
   }
 
   return (
@@ -25,6 +23,8 @@ const DifficultyButtons = () => {
           className={`${styles.btn} ${
             selectedDifficulty === level.toLowerCase() ? styles.selected : ""
           }`}
+          type="button"
+          {...register}
         >
           {level.charAt(0).toUpperCase() + level.slice(1)}
         </button>

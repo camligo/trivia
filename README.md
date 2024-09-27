@@ -84,4 +84,34 @@ Planned future features and improvements:
 - Added basic SASS styling to pages and new folder for global style variables
 - Added routing to main app with react-router-dom
 - Created landing page with Gif
-- Added navigation between landing oage and create game page
+- Added navigation between landing page and create game page
+
+### 24/09/2024
+
+- Created React hook form with Zod for creation of a new trivia game
+- Created context for fetched data across pages
+- Updated fetch method to get correct data from the form
+- Created new page to display trivia questions
+- Created function to send new game data to the backend
+
+
+### 25/09/2024
+
+- Created method to display randomized answer alternatives to trivia questions
+- Created new Questions page to display each question and answers
+- Created new React hook form with Zod to grab user answer input
+- Implemented functionality for next button to display next question in trivia and added basic styling for question page
+- Created context and updated backend to keep track of score
+- Implemented score calculation functionality in frontend
+- Created function to send score to backend
+- Added a method in service tha utilizes built-in HTML parsing in browser to decode questions and answers
+
+### 27/09/2024
+
+- Created simple end-to-end tests with RestAssured
+- Updated controller methods to return correct http statuses
+- Fixed category selector bug by creating category context
+- Updated question context
+- Added results messages and stars based on score percentage
+- Updates landing page animation
+- Added animations in results page based on score percentage

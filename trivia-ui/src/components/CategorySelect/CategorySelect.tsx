@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react"
-import { CategoryResponse, getAllCategories } from "../../services/trivia-service"
+import { useContext } from "react"
 import styles from "./CategorySelect.module.scss"
+import { UseFormRegisterReturn } from "react-hook-form";
+import { CategoryContext } from "../../context/CategoryContextProvider/CategoryContextProvider";
 
-const CategorySelect = () => {
-  const [categories, setCategories] = useState<CategoryResponse[]>([]);
+interface CategorySelectProps {
+  register: UseFormRegisterReturn<"category">
+}
 
-  useEffect(() => {
-    getAllCategories()
-      .then(data => {
-        setCategories(data)
-      })
-      .catch(e => console.error(e))
-  }, [])
+const CategorySelect = ({ register }: CategorySelectProps) => {
+  const context = useContext(CategoryContext);
+  if (context === undefined) {
+    throw new Error('Something went wrong');
+  }
+  const { categories } = context
 
   return (
     <div>
-      <select id="category" className={styles.selectMenu}>
+      <select 
+        id="category" 
+        className={styles.selectMenu} 
+        {...register}
+      >
         {categories.map(category => (
           <option key={category.id} value={category.id}>
             {category.name}
