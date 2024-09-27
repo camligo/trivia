@@ -9,5 +9,10 @@
   .text {
     font-family: v.$main;
     color: v.$text;
+    text-align: center;
+  }
+
+  .stars {
+    font-size: 40px;
   }
 }
