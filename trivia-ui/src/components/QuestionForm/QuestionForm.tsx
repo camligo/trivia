@@ -15,7 +15,7 @@ const QuestionForm = () => {
   if (context === undefined) {
     throw new Error('Something went wrong');
   }
-  const { questions } = context;
+  const { questions, currentQuestionIndex, setCurrentQuestionIndex } = context;
 
   const scoreContext = useContext(ScoreContext);
   if (scoreContext === undefined) {
@@ -28,7 +28,6 @@ const QuestionForm = () => {
   const { id } = useParams() as { id: string };
   const idNumber = parseInt(id);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [currentAnswers, setCurrentAnswers] = useState<string[]>([]);
 
   const lastQuestionIndex = questions.length;
