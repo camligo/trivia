@@ -105,3 +105,9 @@ Planned future features and improvements:
 - Implemented score calculation functionality in frontend
 - Created function to send score to backend
 - Added a method in service tha utilizes built-in HTML parsing in browser to decode questions and answers
+
+### 27/09/2024
+
+- Created simple end-to-end tests with RestAssured
+- Updated controller methods to return correct http statuses
+- Fixed category selector bug by creating category context

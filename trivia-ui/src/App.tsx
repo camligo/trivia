@@ -6,11 +6,12 @@ import QuestionsContextProvider from "./context/QuestionsContextProvider/Questio
 import QuestionPage from "./pages/QuestionPage/QuestionPage";
 import ScoreContextProvider from "./context/ScoreContextProvider/ScoreContextProvider";
 import ResultsPage from "./pages/ResultsPage/ResultsPage";
+import CategoryContextProvider from "./context/CategoryContextProvider/CategoryContextProvider";
 
 function App() {
-
   return (
     <>
+      <CategoryContextProvider>
       <QuestionsContextProvider>
       <ScoreContextProvider>
         <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         </BrowserRouter>
       </ScoreContextProvider>
       </QuestionsContextProvider>
+      </CategoryContextProvider>
     </>
   )
 }
