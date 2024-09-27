@@ -114,3 +114,4 @@ Planned future features and improvements:
 - Updated question context
 - Added results messages and stars based on score percentage
 - Updates landing page animation
+- Added animations in results page based on score percentage

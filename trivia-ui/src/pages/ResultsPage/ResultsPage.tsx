@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { calculateResult } from "../../services/trivia-service";
 import StarIcon from "../../components/StarIcon/StarIcon";
+import ResultAnimation from "../../components/ResultAnimation/ResultAnimation";
 
 const ResultsPage = () => {
   const scoreContext = useContext(ScoreContext);
@@ -34,6 +35,9 @@ const ResultsPage = () => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.text}>{resultMessage}</h2>
+
+      <ResultAnimation percentageScore={percentageScore}/>
+
       <div className={styles.stars}>
         {[...Array(3)].map((_, index) => (
           <StarIcon key={index} isFilled={index < starsToFill}/>
