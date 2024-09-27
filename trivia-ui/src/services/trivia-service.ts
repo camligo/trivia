@@ -73,3 +73,18 @@ export const decodeHtmlEntities = (text: string) => {
   textArea.innerHTML = text;
   return textArea.value;
 }
+
+export const calculateResult = (percentageScore: number) => {
+  const winMessages = ["Amazing!", "Perfect!", "Excellent!"];
+  const neutralMessages = ["Nice job!", "Well done!", "Good work!"];
+  const loseMessages = ["Better luck next time...", "You can do better...", "Have you thought about becoming a carpenter instead?"];
+
+  const randomIndex = Math.floor(Math.random() * 3);
+
+  if (percentageScore >= 75) {
+    return winMessages[randomIndex];
+  } else if (percentageScore < 40) {
+    return loseMessages[randomIndex];
+  }
+  return neutralMessages[randomIndex];
+}

@@ -15,7 +15,7 @@ const CreateGamePage = () => {
   if (context === undefined) {
     throw new Error('Something went wrong');
   }
-  const { setQuestions } = context;
+  const { setQuestions, setCurrentQuestionIndex } = context;
 
   const scoreContext = useContext(ScoreContext);
   if (scoreContext === undefined) {
@@ -36,12 +36,12 @@ const CreateGamePage = () => {
           createGame(data),
           fetchNewTrivia(data),
       ]);
-      
+
       setScore(0);
       setQuestions(trivia);
+      setCurrentQuestionIndex(0);
       console.log('Game:', game);
       console.log('Trivia:', trivia);
-
       navigate(`/game/${game.id}`); // Navigate to the game page
     } catch (e) {
         console.error('Error:', e); // Handle errors

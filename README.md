@@ -112,3 +112,6 @@ Planned future features and improvements:
 - Updated controller methods to return correct http statuses
 - Fixed category selector bug by creating category context
 - Updated question context
+- Added results messages and stars based on score percentage
+- Updates landing page animation
+- Added animations in results page based on score percentage
