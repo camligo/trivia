@@ -115,3 +115,4 @@ Planned future features and improvements:
 - Added results messages and stars based on score percentage
 - Updates landing page animation
 - Added animations in results page based on score percentage
+- Added backgorund music while current game is ongoing
