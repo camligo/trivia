@@ -26,7 +26,7 @@ const LandingPage = () => {
     <main className={styles.pageWrapper}>
       <img
         src={gif}
-        alt="Gif of computer reading book"
+        alt="Flying rocket animation"
         className={styles.gifImage}
       />
       <div className={styles.cardWrapper}>
