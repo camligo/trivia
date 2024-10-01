@@ -123,3 +123,7 @@ Planned future features and improvements:
 - Created progressbar component to dynamically display progress based on percentage of questions completed
 - Added back-to-previous-question functionality that keeps previous answer highlighted
 - Simplified the logic of the Next question method in Question form
+
+### 1/10/2024
+
+- Minor fixes to styling code

@@ -1,11 +1,13 @@
+@use "../../styles/variables.scss" as v;
+
 .progressBarContainer {
   width: 100%;
-  background: gray;
+  background: v.$dark-purple;
   height: 10px;
   margin-bottom: 20px;
 
   .progressBar {
-    background: orange;
+    background: v.$orange;
     height: 100%;
     transition: width 0.3s ease;
   }
