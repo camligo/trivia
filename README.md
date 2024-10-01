@@ -115,3 +115,15 @@ Planned future features and improvements:
 - Added results messages and stars based on score percentage
 - Updates landing page animation
 - Added animations in results page based on score percentage
+- Added backgorund music while current game is ongoing
+
+
+### 30/09/2024
+
+- Created progressbar component to dynamically display progress based on percentage of questions completed
+- Added back-to-previous-question functionality that keeps previous answer highlighted
+- Simplified the logic of the Next question method in Question form
+
+### 1/10/2024
+
+- Minor fixes to styling code

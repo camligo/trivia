@@ -1,0 +1,10 @@
+@use "../../styles/variables.scss" as v;
+
+.backArrow {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  font-size: 1.5rem;
+  color: v.$text;
+  cursor: pointer;
+}
