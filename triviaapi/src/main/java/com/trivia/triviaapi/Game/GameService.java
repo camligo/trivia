@@ -1,5 +1,8 @@
 package com.trivia.triviaapi.Game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +19,11 @@ public class GameService {
     Game newGame = new Game();
     Integer category = data.getCategory();
     String difficulty = data.getDifficulty();
+    String questions = data.getQuestions();
+
     newGame.setCategory(category);
     newGame.setDifficulty(difficulty);
+    newGame.setQuestions(questions);
 
     this.repo.save(newGame);
 

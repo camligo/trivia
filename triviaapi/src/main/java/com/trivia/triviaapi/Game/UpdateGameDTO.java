@@ -1,6 +1,5 @@
 package com.trivia.triviaapi.Game;
 
-
 public class UpdateGameDTO {
   private Integer score;
 

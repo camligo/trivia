@@ -34,12 +34,12 @@ const CreateGamePage = () => {
       const trivia = await fetchNewTrivia(data);
       setQuestions(trivia);
 
-      const questionsArray = getAllQuestions(trivia);
-      const game = await createGame(data, questionsArray);
+      const questionsString = getAllQuestions(trivia);
+      const game = await createGame(data, questionsString);
       setScore(0);
       setCurrentQuestionIndex(0);
 
-      console.log(questionsArray);
+      console.log(questionsString);
       console.log('Game:', game);
       console.log('Trivia:', trivia);
       navigate(`/game/${game.id}`); // Navigate to the game page

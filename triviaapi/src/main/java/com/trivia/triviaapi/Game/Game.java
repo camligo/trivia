@@ -1,9 +1,11 @@
 package com.trivia.triviaapi.Game;
 
 import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,8 +36,8 @@ public class Game {
   @Column
   private Integer category;
 
-  @Column
-  private ArrayList<String> questions;
+  @Column(columnDefinition = "LONGTEXT")
+  private String questions;
 
   @Column
   private ArrayList<Integer> selectedAnswers;
@@ -64,6 +66,14 @@ public class Game {
 
   public Integer getCategory() {
     return category;
+  }
+
+  public String getQuestions() {
+    return questions;
+  }
+
+  public void setQuestions(String questions) {
+    this.questions = questions;
   }
 
   public void setId(Long id) {

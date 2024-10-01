@@ -50,13 +50,7 @@ export const getAllCategories = async () => {
 }
 
 export const getAllQuestions = (questions: QuestionResponse[]) => {
-  const questionsArray: string[] = [];
-
-  questions.map((question) => {
-    questionsArray.push(question.question);
-  });
-
-  return questionsArray;
+  return questions.map((question) => question.question).join(",");
 }
 
 export const getQuestionAnswers = ( question: QuestionResponse ) => {
