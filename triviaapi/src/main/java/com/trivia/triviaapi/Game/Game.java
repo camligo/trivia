@@ -45,8 +45,8 @@ public class Game {
   @Column
   private ArrayList<Integer> correctAnswers;
 
-  @Column
-  private ArrayList<ArrayList<String>> answers;
+  @Column(columnDefinition = "LONGTEXT")
+  private String answers;
 
   public Long getId() {
     return id;
@@ -72,6 +72,10 @@ public class Game {
     return questions;
   }
 
+  public String getAnswers() {
+    return answers;
+  }
+
   public void setQuestions(String questions) {
     this.questions = questions;
   }
@@ -94,6 +98,10 @@ public class Game {
 
   public void setCategory(Integer category) {
     this.category = category;
+  }
+
+  public void setAnswers(String answers) {
+    this.answers = answers;
   }
 
   @Override

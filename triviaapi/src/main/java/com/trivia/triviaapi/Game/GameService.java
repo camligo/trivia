@@ -1,8 +1,5 @@
 package com.trivia.triviaapi.Game;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +38,22 @@ public class GameService {
     if (data.getScore() != null) {
       foundGame.setScore(data.getScore());
     }
+
+    String newString;
+    if (data.getAnswers() != null) {
+      newString = data.getAnswers();
+    } else {
+      newString = "";
+    }
+
+    String existingString;
+    if (foundGame.getAnswers() != null) {
+      existingString = foundGame.getAnswers();
+    } else {
+      existingString = "";
+    }
+
+    foundGame.setAnswers(existingString + newString);
 
     return this.repo.save(foundGame);
   }

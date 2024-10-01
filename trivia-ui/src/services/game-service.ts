@@ -22,11 +22,12 @@ export const createGame = async (data: GameFormData, questions: string) => {
   return response.json();
 }
 
-export const updateGame = async (id: number, score: number) => {
+export const updateGame = async (id: number, score: number, answers: string[]) => {
   const response = await fetch(`${baseURL}/games/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({
       "score": score,
+      "answers": answers.join(";"),
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -36,6 +37,8 @@ export const updateGame = async (id: number, score: number) => {
   if (!response.ok) {
     throw new Error('Failed to update score');
   }
+
+  console.log("Updated game: ", response.json());
 
   return response;
 }

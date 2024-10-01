@@ -50,7 +50,7 @@ export const getAllCategories = async () => {
 }
 
 export const getAllQuestions = (questions: QuestionResponse[]) => {
-  return questions.map((question) => question.question).join(",");
+  return questions.map((question) => question.question).join(";");
 }
 
 export const getQuestionAnswers = ( question: QuestionResponse ) => {
