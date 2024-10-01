@@ -1,17 +1,13 @@
 package com.trivia.triviaapi.Game;
 
 import java.util.Date;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.trivia.triviaapi.Question.Question;
+import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,6 +23,7 @@ public class Game {
   @Column
   private Integer score;
 
+  // need to implement
   @Column
   @Temporal(TemporalType.TIMESTAMP)
   private Date playedAt;
@@ -37,10 +34,17 @@ public class Game {
   @Column
   private Integer category;
 
+  @Column
+  private ArrayList<String> questions;
 
-  @OneToMany(mappedBy = "game")
-  @JsonIgnoreProperties("game")
-  private List<Question> questions;
+  @Column
+  private ArrayList<Integer> selectedAnswers;
+
+  @Column
+  private ArrayList<Integer> correctAnswers;
+
+  @Column
+  private ArrayList<ArrayList<String>> answers;
 
   public Long getId() {
     return id;
@@ -62,10 +66,6 @@ public class Game {
     return category;
   }
 
-  public List<Question> getQuestions() {
-    return questions;
-  }
-
   public void setId(Long id) {
     this.id = id;
   }
@@ -84,10 +84,6 @@ public class Game {
 
   public void setCategory(Integer category) {
     this.category = category;
-  }
-
-  public void setQuestions(List<Question> questions) {
-    this.questions = questions;
   }
 
   @Override

@@ -19,7 +19,6 @@ public class GameService {
     newGame.setCategory(category);
     newGame.setDifficulty(difficulty);
 
-    // return this.repo.save(newGame).toString();
     this.repo.save(newGame);
 
     return newGame;

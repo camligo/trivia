@@ -74,7 +74,7 @@ const QuestionForm = () => {
     }
 
     if (index === lastQuestionIndex - 1) {
-      navigate("/game/results");
+      navigate(`/game/${idNumber}/results`);
     } else {
       setCurrentQuestionIndex(index + 1);
     }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ScoreContext } from "../../context/ScoreContextProvider/ScoreContextProvider";
 import styles from "./ResultsPage.module.scss"
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { calculateResult } from "../../services/trivia-service";
 import StarIcon from "../../components/StarIcon/StarIcon";
@@ -19,6 +19,9 @@ const ResultsPage = () => {
     throw new Error("Couldn't find score");
   }
   const { questions } = questionContext;
+
+  const navigate = useNavigate();
+  const { id } = useParams() as { id: string };
 
   const numOfQuestions = questions.length;
 
@@ -44,6 +47,16 @@ const ResultsPage = () => {
         ))}
       </div>
       <h4 className={styles.text}>You scored {score}/{numOfQuestions} points</h4>
+
+      <div className={styles.ReviewBtnContainer}>
+        <button 
+          className={styles.ReviewBtn}
+          onClick={() => navigate(`/game/${id}/review`)}
+        >
+          Review Answers
+        </button>
+      </div>
+
       <Link to="/game/new" className={styles.text}>Play again?</Link>
     </div>
   )

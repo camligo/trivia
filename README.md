@@ -127,3 +127,5 @@ Planned future features and improvements:
 ### 1/10/2024
 
 - Minor fixes to styling code
+- Updated game entity
+- Stored questions as an array in the frontend to send to backend

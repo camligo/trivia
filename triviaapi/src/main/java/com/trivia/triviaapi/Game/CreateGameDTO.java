@@ -1,5 +1,7 @@
 package com.trivia.triviaapi.Game;
 
+import java.util.ArrayList;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,6 +13,8 @@ public class CreateGameDTO {
     @NotBlank
     private String difficulty;
 
+    private ArrayList<String> questions;
+
     public Integer getCategory() {
         return category;
     }
@@ -19,12 +23,20 @@ public class CreateGameDTO {
         return difficulty;
     }
 
+    public ArrayList<String> getQuestions() {
+        return questions;
+    }
+
     public void setCategory(Integer category) {
         this.category = category;
     }
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public void setQuestions(ArrayList<String> questions) {
+        this.questions = questions;
     }
 
     @Override
