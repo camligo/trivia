@@ -5,12 +5,22 @@ public class UpdateGameDTO {
 
   private String answers;
 
+  private String selectedAnswers;
+
   public Integer getScore() {
     return score;
   }
 
   public String getAnswers() {
     return answers;
+  }
+
+  public String getSelectedAnswers() {
+    return selectedAnswers;
+  }
+
+  public void setSelectedAnswers(String selectedAnswers) {
+    this.selectedAnswers = selectedAnswers;
   }
 
   public void setScore(Integer score) {

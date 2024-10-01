@@ -39,21 +39,37 @@ public class GameService {
       foundGame.setScore(data.getScore());
     }
 
-    String newString;
+    String newAnswersString;
     if (data.getAnswers() != null) {
-      newString = data.getAnswers();
+      newAnswersString = data.getAnswers();
     } else {
-      newString = "";
+      newAnswersString = "";
     }
 
-    String existingString;
+    String existingAnswersString;
     if (foundGame.getAnswers() != null) {
-      existingString = foundGame.getAnswers();
+      existingAnswersString = foundGame.getAnswers();
     } else {
-      existingString = "";
+      existingAnswersString = "";
     }
 
-    foundGame.setAnswers(existingString + newString);
+    foundGame.setAnswers(existingAnswersString + newAnswersString);
+
+    String newSelectedAnswersString;
+    if (data.getSelectedAnswers() != null) {
+      newSelectedAnswersString = data.getSelectedAnswers();
+    } else {
+      newSelectedAnswersString = "";
+    }
+
+    String existingSelectedAnswersString;
+    if (foundGame.getSelectedAnswers() != null) {
+      existingSelectedAnswersString = foundGame.getSelectedAnswers();
+    } else {
+      existingSelectedAnswersString = "";
+    }
+
+    foundGame.setSelectedAnswers(existingSelectedAnswersString + newSelectedAnswersString);
 
     return this.repo.save(foundGame);
   }

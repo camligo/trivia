@@ -131,3 +131,4 @@ Planned future features and improvements:
 - Stored questions as an array in the frontend to send to backend
 - Updated backend to store questions as a concatenated string
 - Updated backend to store answer options as a concatenated string
+- Updated backend to store selected answers as a concatenated string
