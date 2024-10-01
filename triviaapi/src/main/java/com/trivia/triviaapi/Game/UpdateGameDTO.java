@@ -7,6 +7,8 @@ public class UpdateGameDTO {
 
   private String selectedAnswers;
 
+  private String correctAnswers;
+
   public Integer getScore() {
     return score;
   }
@@ -17,6 +19,14 @@ public class UpdateGameDTO {
 
   public String getSelectedAnswers() {
     return selectedAnswers;
+  }
+
+  public String getCorrectAnswers() {
+    return correctAnswers;
+  }
+
+  public void setCorrectAnswers(String correctAnswers) {
+    this.correctAnswers = correctAnswers;
   }
 
   public void setSelectedAnswers(String selectedAnswers) {

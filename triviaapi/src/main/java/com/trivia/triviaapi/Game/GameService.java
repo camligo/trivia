@@ -71,6 +71,22 @@ public class GameService {
 
     foundGame.setSelectedAnswers(existingSelectedAnswersString + newSelectedAnswersString);
 
+    String newCorrectAnswersString;
+    if (data.getCorrectAnswers() != null) {
+      newCorrectAnswersString = data.getCorrectAnswers();
+    } else {
+      newCorrectAnswersString = "";
+    }
+
+    String existingCorrectAnswersString;
+    if (foundGame.getCorrectAnswers() != null) {
+      existingCorrectAnswersString = foundGame.getCorrectAnswers();
+    } else {
+      existingCorrectAnswersString = "";
+    }
+
+    foundGame.setCorrectAnswers(existingCorrectAnswersString + newCorrectAnswersString);
+
     return this.repo.save(foundGame);
   }
 }

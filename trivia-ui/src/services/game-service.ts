@@ -22,13 +22,14 @@ export const createGame = async (data: GameFormData, questions: string) => {
   return response.json();
 }
 
-export const updateGame = async (id: number, score: number, answers: string[], selectedAnswer: string) => {
+export const updateGame = async (id: number, score: number, answers: string[], selectedAnswer: string, correctAnswer: string) => {
   const response = await fetch(`${baseURL}/games/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({
       "score": score,
       "answers": answers.join(";"),
       "selectedAnswers": selectedAnswer + ";",
+      "correctAnswers": correctAnswer + ";",
     }),
     headers: {
       'Content-Type': 'application/json',

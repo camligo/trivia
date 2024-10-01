@@ -68,9 +68,9 @@ const QuestionForm = () => {
     if (isCorrect) {
       const newScore = score + 1;
       setScore(newScore);
-      updateGame(idNumber, newScore, currentAnswers, selectedAnswer);
+      updateGame(idNumber, newScore, currentAnswers, selectedAnswer, questions[index].correct_answer);
     } else {
-      updateGame(idNumber, score, currentAnswers, selectedAnswer); // only update game without a change of score
+      updateGame(idNumber, score, currentAnswers, selectedAnswer, questions[index].correct_answer); // only update game without a change of score
     }
 
     if (index === lastQuestionIndex - 1) {

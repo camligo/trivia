@@ -42,8 +42,8 @@ public class Game {
   @Column(columnDefinition = "LONGTEXT")
   private String selectedAnswers;
 
-  @Column
-  private ArrayList<Integer> correctAnswers;
+  @Column(columnDefinition = "LONGTEXT")
+  private String correctAnswers;
 
   @Column(columnDefinition = "LONGTEXT")
   private String answers;
@@ -78,6 +78,14 @@ public class Game {
 
   public String getSelectedAnswers() {
     return selectedAnswers;
+  }
+
+  public String getCorrectAnswers() {
+    return correctAnswers;
+  }
+
+  public void setCorrectAnswers(String correctAnswers) {
+    this.correctAnswers = correctAnswers;
   }
 
   public void setSelectedAnswers(String selectedAnswers) {
