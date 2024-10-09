@@ -137,3 +137,4 @@ Planned future features and improvements:
 ### 9/10/2024
 
 - Created function to get a single game by id
+- Rendered questions and answers on review page

@@ -36,7 +36,7 @@ export const updateGame = async (id: number, score: number, answers: string[], s
     method: 'PATCH',
     body: JSON.stringify({
       "score": score,
-      "answers": answers.join(";"),
+      "answers": answers.join(";") + ";",
       "selectedAnswers": selectedAnswer + ";",
       "correctAnswers": correctAnswer + ";",
     }),
