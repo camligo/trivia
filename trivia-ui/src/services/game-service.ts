@@ -22,6 +22,15 @@ export const createGame = async (data: GameFormData, questions: string) => {
   return response.json();
 }
 
+export const getGame = async (id: number) => {
+  const response = await fetch(`${baseURL}/games/${id}`)
+
+  if (!response.ok) {
+    throw new Error("Couldn't find game");
+  }
+  return response.json();
+}
+
 export const updateGame = async (id: number, score: number, answers: string[], selectedAnswer: string, correctAnswer: string) => {
   const response = await fetch(`${baseURL}/games/${id}`, {
     method: 'PATCH',
@@ -39,8 +48,9 @@ export const updateGame = async (id: number, score: number, answers: string[], s
   if (!response.ok) {
     throw new Error('Failed to update score');
   }
-
-  console.log("Updated game: ", response.json());
-
   return response;
+}
+
+export const transformStringToArray = (dbString: string) => {
+  return dbString.split(";")
 }

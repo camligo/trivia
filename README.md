@@ -135,3 +135,5 @@ Planned future features and improvements:
 - Updated backend to store correct answers as a concatenated string
 
 ### 9/10/2024
+
+- Created function to get a single game by id
