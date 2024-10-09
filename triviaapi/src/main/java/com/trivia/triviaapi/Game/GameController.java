@@ -27,12 +27,12 @@ public class GameController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Game> getGameById(@PathVariable Long id) throws Exception {
+  public Game getGameById(@PathVariable Long id) throws Exception {
     Optional<Game> result = this.gameService.getGameById(id);
 
     Game foundGame = result.orElseThrow(() -> new Exception("Couldn't find game with id " + id));
 
-    return new ResponseEntity<Game>(foundGame, HttpStatus.OK);
+    return foundGame;
   }
 
   @PatchMapping("/{id}")
