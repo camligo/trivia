@@ -68,13 +68,13 @@ const QuestionForm = () => {
     if (isCorrect) {
       const newScore = score + 1;
       setScore(newScore);
-      updateGame(idNumber, newScore)
+      updateGame(idNumber, newScore, currentAnswers, selectedAnswer, questions[index].correct_answer);
     } else {
-      updateGame(idNumber, score); // only update game without a change of score
+      updateGame(idNumber, score, currentAnswers, selectedAnswer, questions[index].correct_answer); // only update game without a change of score
     }
 
     if (index === lastQuestionIndex - 1) {
-      navigate("/game/results");
+      navigate(`/game/${idNumber}/results`);
     } else {
       setCurrentQuestionIndex(index + 1);
     }

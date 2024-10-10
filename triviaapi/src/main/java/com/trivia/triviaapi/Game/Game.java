@@ -2,16 +2,14 @@ package com.trivia.triviaapi.Game;
 
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.trivia.triviaapi.Question.Question;
+import java.util.ArrayList;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,6 +25,7 @@ public class Game {
   @Column
   private Integer score;
 
+  // need to implement
   @Column
   @Temporal(TemporalType.TIMESTAMP)
   private Date playedAt;
@@ -37,10 +36,17 @@ public class Game {
   @Column
   private Integer category;
 
+  @Column(columnDefinition = "LONGTEXT")
+  private String questions;
 
-  @OneToMany(mappedBy = "game")
-  @JsonIgnoreProperties("game")
-  private List<Question> questions;
+  @Column(columnDefinition = "LONGTEXT")
+  private String selectedAnswers;
+
+  @Column(columnDefinition = "LONGTEXT")
+  private String correctAnswers;
+
+  @Column(columnDefinition = "LONGTEXT")
+  private String answers;
 
   public Long getId() {
     return id;
@@ -62,8 +68,32 @@ public class Game {
     return category;
   }
 
-  public List<Question> getQuestions() {
+  public String getQuestions() {
     return questions;
+  }
+
+  public String getAnswers() {
+    return answers;
+  }
+
+  public String getSelectedAnswers() {
+    return selectedAnswers;
+  }
+
+  public String getCorrectAnswers() {
+    return correctAnswers;
+  }
+
+  public void setCorrectAnswers(String correctAnswers) {
+    this.correctAnswers = correctAnswers;
+  }
+
+  public void setSelectedAnswers(String selectedAnswers) {
+    this.selectedAnswers = selectedAnswers;
+  }
+
+  public void setQuestions(String questions) {
+    this.questions = questions;
   }
 
   public void setId(Long id) {
@@ -86,8 +116,8 @@ public class Game {
     this.category = category;
   }
 
-  public void setQuestions(List<Question> questions) {
-    this.questions = questions;
+  public void setAnswers(String answers) {
+    this.answers = answers;
   }
 
   @Override

@@ -49,6 +49,10 @@ export const getAllCategories = async () => {
   return formattedData as CategoryResponse[];
 }
 
+export const getAllQuestions = (questions: QuestionResponse[]) => {
+  return questions.map((question) => question.question).join(";");
+}
+
 export const getQuestionAnswers = ( question: QuestionResponse ) => {
   const answers: string[] = [];
 

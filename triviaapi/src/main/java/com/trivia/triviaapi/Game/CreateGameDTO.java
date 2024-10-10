@@ -11,6 +11,8 @@ public class CreateGameDTO {
     @NotBlank
     private String difficulty;
 
+    private String questions;
+
     public Integer getCategory() {
         return category;
     }
@@ -19,12 +21,20 @@ public class CreateGameDTO {
         return difficulty;
     }
 
+    public String getQuestions() {
+        return questions;
+    }
+
     public void setCategory(Integer category) {
         this.category = category;
     }
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public void setQuestions(String questions) {
+        this.questions = questions;
     }
 
     @Override

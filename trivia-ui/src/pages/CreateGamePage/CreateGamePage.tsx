@@ -4,7 +4,7 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CreateGamePage.module.scss"
 import GameForm from "../../components/GameForm/GameForm";
 import { GameFormData } from "../../components/GameForm/schema";
-import { fetchNewTrivia } from "../../services/trivia-service";
+import { fetchNewTrivia, getAllQuestions } from "../../services/trivia-service";
 import { QuestionsContext } from "../../context/QuestionsContextProvider/QuestionsContextProvider";
 import { useContext } from "react";
 import { createGame } from "../../services/game-service";
@@ -31,15 +31,15 @@ const CreateGamePage = () => {
 
   const handleSubmit = async (data: GameFormData) => {
     try {
-      // Create the game and fetch new trivia in parallel
-      const [game, trivia] = await Promise.all([
-          createGame(data),
-          fetchNewTrivia(data),
-      ]);
-
-      setScore(0);
+      const trivia = await fetchNewTrivia(data);
       setQuestions(trivia);
+
+      const questionsString = getAllQuestions(trivia);
+      const game = await createGame(data, questionsString);
+      setScore(0);
       setCurrentQuestionIndex(0);
+
+      console.log(questionsString);
       console.log('Game:', game);
       console.log('Trivia:', trivia);
       navigate(`/game/${game.id}`); // Navigate to the game page
