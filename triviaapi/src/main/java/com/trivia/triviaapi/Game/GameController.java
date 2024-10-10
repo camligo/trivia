@@ -3,7 +3,6 @@ package com.trivia.triviaapi.Game;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -28,12 +27,12 @@ public class GameController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Game> getGameById(@PathVariable Long id) throws Exception {
+  public Game getGameById(@PathVariable Long id) throws Exception {
     Optional<Game> result = this.gameService.getGameById(id);
 
     Game foundGame = result.orElseThrow(() -> new Exception("Couldn't find game with id " + id));
 
-    return new ResponseEntity<Game>(foundGame, HttpStatus.OK);
+    return foundGame;
   }
 
   @PatchMapping("/{id}")

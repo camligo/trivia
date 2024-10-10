@@ -53,7 +53,7 @@ const GameForm = ({
               </div>
             ))}
           </div>
-      </div>
+        </div>
       </div>
       <div className={styles.btnContainer}>
         <button className={styles.startBtn} type="submit">

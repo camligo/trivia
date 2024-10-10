@@ -127,3 +127,18 @@ Planned future features and improvements:
 ### 1/10/2024
 
 - Minor fixes to styling code
+- Updated game entity
+- Stored questions as an array in the frontend to send to backend
+- Updated backend to store questions as a concatenated string
+- Updated backend to store answer options as a concatenated string
+- Updated backend to store selected answers as a concatenated string
+- Updated backend to store correct answers as a concatenated string
+
+### 9/10/2024
+
+- Created function to get a single game by id
+- Rendered questions and answers on review page
+
+### 10/10/2024
+- Updated styling and logic to check for correct answers on review page
+- Updated styling and logic to check for selected answers on review page

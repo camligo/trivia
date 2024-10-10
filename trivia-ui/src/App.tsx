@@ -7,6 +7,7 @@ import QuestionPage from "./pages/QuestionPage/QuestionPage";
 import ScoreContextProvider from "./context/ScoreContextProvider/ScoreContextProvider";
 import ResultsPage from "./pages/ResultsPage/ResultsPage";
 import CategoryContextProvider from "./context/CategoryContextProvider/CategoryContextProvider";
+import ReviewPage from "./pages/ReviewPage/ReviewPage";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Route path="/" element={<LandingPage />}/>
             <Route path="/game/new" element={<CreateGamePage />} />
             <Route path="/game/:id" element={<QuestionPage />}/>
-            <Route path="/game/results" element={<ResultsPage />} />
+            <Route path="/game/:id/results" element={<ResultsPage />} />
+            <Route path="/game/:id/review" element={<ReviewPage />} />
           </Routes>
         </BrowserRouter>
       </ScoreContextProvider>
