@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { getGame, transformStringToArray } from "../../services/game-service";
 import { useParams } from "react-router-dom";
 import { decodeHtmlEntities } from "../../services/trivia-service";
+import styles from "./ReviewPage.module.scss"
 
 const ReviewPage = () => {
   const [game, setGame] = useState(null);
   const [questions, setQuestions] = useState<string[]>([])
   const [answers, setAnswers] = useState<string[]>([])
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
+  const [correctAnswers, setCorrectAnswers] = useState<string[]>([])
 
   const { id } = useParams() as { id: string };
   const idNumber = parseInt(id);
@@ -25,6 +26,11 @@ const ReviewPage = () => {
         const cleanedAnswers = transformStringToArray(decodedAnswers)
         setAnswers(cleanedAnswers)
         console.log(cleanedAnswers)
+
+        const decodedCorrectAnswers = decodeHtmlEntities(data.correctAnswers)
+        const cleanedCorrectAnswers = transformStringToArray(decodedCorrectAnswers)
+        setCorrectAnswers(cleanedCorrectAnswers)
+        console.log("correct answer", cleanedCorrectAnswers)
       })
       .catch(e => console.error(e))
   }, [idNumber]);
@@ -36,19 +42,29 @@ const ReviewPage = () => {
   };
 
   return(
-    <>
+    <div className={styles.pageWrapper}>
       <h1>Review</h1>
       {questions.map((question, index) => (
-        <div key={index}>
-          <h2>{question}</h2>
-          <ul>
-            {getAnswersForQuestion(index).map((answer, answerIndex) => (
-              <li key={answerIndex}>{answer}</li>
-            ))}
-          </ul>
+        <div key={index} className={styles.questionContainer}>
+          <h2 className={styles.question}>{question}</h2>
+          <div className={styles.answersContainer}>
+            <ul className={styles.answersList}>
+              {getAnswersForQuestion(index).map((answer, answerIndex) => {
+                const isCorrect = answer === correctAnswers[index];
+                return (
+                  <li
+                    key={answerIndex}
+                    className={`${styles.answer} ${isCorrect ? styles.correctAnswer : ""}`}
+                  >
+                    {answer}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 

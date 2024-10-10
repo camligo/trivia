@@ -1,0 +1,69 @@
+@use "../../styles/variables.scss" as v;
+
+.pageWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: v.$bg;
+  padding: 0 20px;
+  position: relative;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+
+  .questionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .question {
+    display: flex;
+    font-family: v.$main;
+    padding: 10px;
+    color: v.$text;
+    text-align: center;
+  }
+
+  .answersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 10px;
+    width: 100%;
+
+    .answersList {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .answer {
+        padding: 10px;
+        border-radius: 15px;
+        background: transparent;
+        border: 1px solid v.$text;
+        color: v.$text;
+        font-family: v.$main;
+        cursor: pointer;
+        transition: background 0.3s ease, border-color 0.3s ease;
+        width: 90%;
+        min-width: 200px;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .correctAnswer {
+        background: v.$green;
+      }
+    }
+  }
+}
