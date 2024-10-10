@@ -9,6 +9,7 @@ const ReviewPage = () => {
   const [questions, setQuestions] = useState<string[]>([])
   const [answers, setAnswers] = useState<string[]>([])
   const [correctAnswers, setCorrectAnswers] = useState<string[]>([])
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([])
 
   const { id } = useParams() as { id: string };
   const idNumber = parseInt(id);
@@ -17,6 +18,7 @@ const ReviewPage = () => {
     getGame(idNumber)
       .then(data => {
         setGame(data)
+        console.log(data)
         const decodedQuestions = decodeHtmlEntities(data.questions)
         const cleanedQuestions = transformStringToArray(decodedQuestions)
         setQuestions(cleanedQuestions)
@@ -31,6 +33,11 @@ const ReviewPage = () => {
         const cleanedCorrectAnswers = transformStringToArray(decodedCorrectAnswers)
         setCorrectAnswers(cleanedCorrectAnswers)
         console.log("correct answer", cleanedCorrectAnswers)
+
+        const decodedSelectedAnswers = decodeHtmlEntities(data.selectedAnswers)
+        const cleanedSelectedAnswers = transformStringToArray(decodedSelectedAnswers)
+        setSelectedAnswers(cleanedSelectedAnswers)
+        console.log("selected answers: ", cleanedSelectedAnswers)
       })
       .catch(e => console.error(e))
   }, [idNumber]);
@@ -43,7 +50,6 @@ const ReviewPage = () => {
 
   return(
     <div className={styles.pageWrapper}>
-      <h1>Review</h1>
       {questions.map((question, index) => (
         <div key={index} className={styles.questionContainer}>
           <h2 className={styles.question}>{question}</h2>
@@ -51,10 +57,18 @@ const ReviewPage = () => {
             <ul className={styles.answersList}>
               {getAnswersForQuestion(index).map((answer, answerIndex) => {
                 const isCorrect = answer === correctAnswers[index];
+                const isSelected = answer === selectedAnswers[index];
+
+                // Determine the class based on the conditions
+                const answerClass = isCorrect && isSelected || isCorrect
+                  ? styles.correctAnswer // Green if selected and correct
+                  : isSelected && !isCorrect
+                  ? styles.selectedAnswer // Red if selected but wrong
+                  : ""; // Default styling for unselected answers
                 return (
                   <li
                     key={answerIndex}
-                    className={`${styles.answer} ${isCorrect ? styles.correctAnswer : ""}`}
+                    className={`${styles.answer} ${answerClass}`}
                   >
                     {answer}
                   </li>

@@ -141,3 +141,4 @@ Planned future features and improvements:
 
 ### 10/10/2024
 - Updated styling and logic to check for correct answers on review page
+- Updated styling and logic to check for selected answers on review page

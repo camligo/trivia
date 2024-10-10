@@ -19,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     width: 700px;
+    padding: 2rem;
   }
 
   ul {
@@ -44,6 +45,8 @@
     .answersList {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      width: 100%;
       gap: 20px;
 
       .answer {
@@ -63,6 +66,10 @@
 
       .correctAnswer {
         background: v.$green;
+      }
+
+      .selectedAnswer {
+        background: red;
       }
     }
   }
